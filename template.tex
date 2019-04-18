@@ -1,0 +1,49 @@
+\documentclass[plain]{sigplanconf}
+\usepackage{balance} % For balanced columns on the last page
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[
+bookmarksopen,
+bookmarksdepth=2,
+breaklinks=true
+]{hyperref}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+\makeatletter
+\def\@copyrightspace{\relax}
+\makeatother
+\begin{document}
+	\title{Language identification for South African Bantu languages Using Rank Order Statistics}
+	%%\subtitle{Philosophy Invades Software Engineering}
+	\authorinfo{Meluleki Dube}
+	{Department of Computer Science\linebreak University of Cape Town\linebreak South Africa}
+	{June 2018}
+	\maketitle
+	\begin{abstract}
+		A lot of research has been done in the field of language identification. However, only a small proportion of these methods used for classification have been tested with the Bantu languages. In this paper we then look at one of the methods, and how it performs for the Bantu languages. The method used in this research is n-gram counting using rank orders. Using this method, we investigated how varying the testing chunk size and learning size affected the accuracy of correctly identifying the languages. The highest accuracy obtained was 99.3\% with testing size of 495 characters and learning size of 600000 characters. The lowest accuracy obtained was 78.72\% when the testing size was 15 characters and learning size was 200000 characters.  
+	\end{abstract}
+	\begin{CCSXML}
+		<ccs2012>
+		<concept>
+		<concept_id>10002951.10003317.10003338</concept_id>		
+		<concept_desc>Information systems~Retrieval models and ranking</concept_desc>
+		<concept_significance>500</concept_significance>
+		</concept>
+		</ccs2012>
+	\end{CCSXML}
+	\keywords
+	N-grams, N-fold cross validation, Rank Order statistics
+	
+	\input{sections/introduction}
+	\nocite{*}
+	\bibliographystyle{abbrvnat}
+	\bibliography{references}
+\end{document}
