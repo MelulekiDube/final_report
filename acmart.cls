@@ -42,7 +42,8 @@ Computing Machinery]
 \def\@classname{acmart}
 \InputIfFileExists{acmart-preload-hook.tex}{%
   \ClassWarning{\@classname}{%
-    I am loading acmart-preload-hook.tex. You are fully responsible
+    I am loading acmart-preload-hook.tex.
+    You are fully responsible
     for any problems from now on.}}{}
 \RequirePackage{xkeyval}
 \RequirePackage{xstring}

@@ -13,6 +13,8 @@ bookmarksopen,
 bookmarksdepth=2,
 breaklinks=true
 ]{hyperref}
+\usepackage{natbib}
+\setcitestyle{square,sort,comma,numbers}
 \makeatletter
 \def\BState{\State\hskip-\ALG@thistlm}
 \makeatother
@@ -28,7 +30,6 @@ breaklinks=true
 	{June 2018}
 	\maketitle
 	\begin{abstract}
-		A lot of research has been done in the field of language identification. However, only a small proportion of these methods used for classification have been tested with the Bantu languages. In this paper we then look at one of the methods, and how it performs for the Bantu languages. The method used in this research is n-gram counting using rank orders. Using this method, we investigated how varying the testing chunk size and learning size affected the accuracy of correctly identifying the languages. The highest accuracy obtained was 99.3\% with testing size of 495 characters and learning size of 600000 characters. The lowest accuracy obtained was 78.72\% when the testing size was 15 characters and learning size was 200000 characters.  
 	\end{abstract}
 	\begin{CCSXML}
 		<ccs2012>
@@ -43,7 +44,7 @@ breaklinks=true
 	N-grams, N-fold cross validation, Rank Order statistics
 	
 	\input{sections/introduction}
-	\nocite{*}
-	\bibliographystyle{abbrvnat}
+	\input{sections/background}
+	\bibliographystyle{acm}
 	\bibliography{references}
 \end{document}

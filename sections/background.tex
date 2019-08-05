@@ -1,0 +1,62 @@
+\section{Background}\label{sec:background}
+%Are there any theories, concepts, terms, and ideas that may be unfamiliar to the target audience and will require you to provide any additional explanation?
+%Any historical data that need to be shared in order to provide context on why the current issue emerged?
+%Are there any concepts that may have been borrowed from other disciplines that may be unfamiliar to the reader and need an explanation?
+\subsection{Quality of Service}\label{subsec:quality-of-services}
+Quality of Service(QoS) is defined to be the ability of the network to provide a service at an assured service level\cite{soldani_book}.
+QoS has relations to the term Quality of Experience(QoE) which explains how users experience a particular service\cite{6462223}.
+For example if we have the raw throughput to be low, and we were watching a YouTube we will not have a good experience of this service.
+In this case the raw throughput measured will be the Quality of Service measurement while the experience that the users have with streaming the YouTube videos will be Quality of Experience.
+The above example is confirmation that QoS affects the users QoE of services.
+Quality of Service includes metrics like throughput and delays being expected in the network.
+For QoS metrics to be meaningful and effective each data should be tied to a particular location, device that recorded the data, and possibly the time the data was collected.
+The aim of this work is to build a tool to allow the different stakeholders in the network to monitor these metrics to give an estimate of the Quality of Service that they can expect from the network.
+
+%Community Networks section
+\subsection{Community Networks}\label{subsec:community-networks}
+Community networks are defined to be large-scale self-organized distributed and decentralized networks, which are built and managed by the citizens for citizens \cite{Braem:2013:CRC:2500098.2500108}.
+In an attempt to reduce costs, community networks are usually built with low cost hardware with the nodes often running an open source software \cite{Braem:2013:CRC:2500098.2500108}.
+Community Networks are part of the subset of networks characterized as:
+(i)open because everyone has a right to know how they are built,
+(ii)free because networks access is not based on discriminatory principles
+(iii)neutral as the network can be used to transmit data of any kind and by any participant \cite{Braem:2015:AEQ:2830629.2830639}.
+
+Community networks have been around since the late 1990s and since then have taken different shapes and forms\cite{8320771}.
+The setup of community networks make them more appealing for providing internet access to unrepresented areas.
+This is because of their characteristics:
+\begin{itemize}
+    \item  Decentralization of the network \cite{Selimi:2014:TAD:2723218.2723265} which removes the chances of having a single point of failure within the network.
+    \item Community networks are also self-managing \cite{Braem:2013:CRC:2500098.2500108}, which already suggests that they are not so costly as they will not require a body to manage the network since the networks are managed by the users of the network.
+\end{itemize}
+An example of this type of network is \text{guifi.net} that operates in Spain \cite{guifi}, which by 2015 was the world's  largest community networks in terms of number of nodes and coverage with over 27000 operational nodes \cite{2015:TOG:2852375.2852741}.
+\paragraph{}
+One important aspect of community networks is a Node, which can be a device that relays data within the network or devices that provide other nodes network access \cite{8320771}.
+The community network also constitutes of links between the nodes and these can be wireless or wired \cite{8320771}.
+
+\subsection{Prior Research}\label{subsec:prior-research}
+Researchers who study community networks are faced with challenges.
+Most of the challenges are classical network challenges that face all other networks and some that peculiar to these networks.
+One of the papers \cite{Braem:2013:CRC:2500098.2500108} enlists some challenges in community networks that researchers may face \cite{Braem:2013:CRC:2500098.2500108}.
+\paragraph{}
+One of the challenges within these networks stems from the fact that the networks at the physical layer usually use wireless networks, which then means that there has to be extensive wireless planning involved
+\cite{Braem:2013:CRC:2500098.2500108}.
+The paper goes on to present an infrastructure that aims to remove obstacles for community networks in terms of sustainability and scalability called Community-lab \cite{Braem:2013:CRC:2500098.2500108}.
+\paragraph{}
+Example of challenges with posed by Community networks stems from the issue of privacy.
+Community networks should permit users to participate in the networks while maintaining the privacy of their data and the data they relay, however, this leads to a different notion of threat models and a new notion of trust between the users \cite{Braem:2013:CRC:2500098.2500108}.
+Also, turning requirements like the need for network traffic to be organized in a fair way such that network neutrality is respected is a challenging task and it is even more challenging which is even more challenging when attempting to address this automatically \cite{Braem:2013:CRC:2500098.2500108}.
+\paragraph{}
+Lastly on examples of Challenges associated with Community networks is the concept of standardization.
+Standardization includes but is not only limited to protocol design according to Braem and his team \cite{Braem:2013:CRC:2500098.2500108}.
+Braem and his team \cite{Braem:2013:CRC:2500098.2500108} claim that currently very little effort has been put into standardization but however standardization is needed for the further growth and sustainability of community networks.
+\paragraph{}
+Community-lab is said to be a open infrastructure that provides to researchers and experimenters a testbed to carry out experiments within wireless community networks \cite{Rameshan:2013:MSC:2508222.2512838}.
+It comes with a testbed that support experimentally-driven research on community based networks. \cite{Braem:2013:CRC:2500098.2500108}.
+More research has since sprung from this infrastructure.
+An example of such research has been a monitoring system for the community-lab  that demonstrated a monitoring system while proposing a new architecture for self management to automate management of these networks \cite{Rameshan:2013:MSC:2508222.2512838}.
+Another research related to this is \cite{Braem:2015:AEQ:2830629.2830639}, which explored end-to-end quality of experience on community networks.
+Quality of experience is widely used to describe how users experience a particular service \cite{6462223}.
+\paragraph{}As stated above, most of these community networks are based in Europe and thus most of the research developed in relation to community networks is with respect to the European countries.
+Limited research has been done for using community networks in developing regions of the world leading to scarcity of most tools for the community networks in these regions.
+There is need to explore some of these tools and investigate how they can be adapted for use in community networks in the context of developing countries.
+
