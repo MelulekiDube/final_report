@@ -1,1 +1,55 @@
-\section{Design Decisions}\label{sec:design-decision}
+\section{Requirement Analysis and Design}\label{sec:design-decision}
+\subsection{Requirements Analysis}\label{subsec:requirements-analysis}
+\begin{itemize}
+    \item Lightweight application to run on users phones to run data collection system
+    \item Testbed for researchers to be able to run experiments on the network
+    \item A way of showing users how many data is used on inethi
+    \item Be able to analyze ip addresses sending the most request, and most visited ip addresses
+    \item Users to be able to track data usage from their children's accounts
+    \item Give users ability to view data accross differnt times
+\end{itemize}
+\subsection{Design}\label{subsec:design}
+\begin{figure*}
+    \begin{center}
+        \includegraphics[width=1\linewidth]{resources/system_des.png}
+    \end{center}
+    \caption{Showing the system overview, different components making the system and the communication directions between these components in the systems.}
+    \label{figure:system}
+\end{figure*}
+Figure\ref{figure:system} shows the architecture of the system with the different components that make up the system.
+The main components of the system as from the design are:
+\begin{itemize}
+    \item \textbf{Collector}, which is the has the aggregating measurement collected from different collection points and sending these to analyzer for some analysis before we save these to the database.
+    \item \textbf{Orchestrator}, used by researchers, system administrator and the system itself to schedule measurements that will be run on the data collection points.
+    \item \textbf{Web Interface}, tool used stakeholders to interact with the system as a whole by doing tasks as, scheduling measurements viewing specific metrics in the network.
+    \item We also have 3 databases that are going to be used with the system.
+    The measurement database and the metadata databases are adopted from the works done by\cite{7523537} with MONROE platform.
+    We added the user database to be able to store user accounts so users can be able to also have their network usage data stored for later viewing.
+\end{itemize}
+\paragraph{}
+Coming up with the system required number of decision to be made.
+One of these was the database types to use for the 3 databases that we want to have in the system.
+The three databases we have in the system have different use cases and this allowed us to have different databases for each of those.
+\begin{itemize}
+    \item The user databases needed to hold user account in a way that it was going to be easy to query user details based on a unique user id or username.
+    We also are going to need a database type that is simple to design while allowing fast queries of a specific username, we decided that the database type to use for this database is going to be a document store database.
+    A document store database is a database type where all the entries are stored in documents with the documents addressed using unique keys\cite{nosql_dbs}.
+    These databases offer great performance and horizontally scalability options\cite{nosql_dbs}.
+    In this case they are attractive for their great performance as we need to be doing fast queries.
+    We settled for Mongo Database as it has a lot of support and a very well documented Java library.
+    \item The Metadata Database is a database that we are going is used to store the experiment request by researchers on the network.
+    Therefore, when a researcher requests particular experiments to be done on the system we want to be able to store this request.
+    The experiment request stored will rarely be queried but when we do so, we still  need the queries to be as fast as possible.
+    Experiment results are all be given a random unique key, which we will use to run queries.
+    Hence, for the above reasons we can still use a document store database as it fits well with our requirements.
+    For this we also chose the Mongo Database for consistency and for the reasons already mentioned.
+    \item Lastly we have the measurement database, which is a database that we will be storing all recorded measurements.
+    This database stores data indexed by timestamps as we do not need any primary keys to reference measurement.
+    Therefore, to satisfy this requirement a time series database is going t be more suitable.
+    We then decided to go with Influx database as its one of the most well-supported time series database with a good documentation.
+    Influx also allows us to tag some other parameters in every measurement that we store so that when we query we can have fast queries for these parameters.
+    An example is that sometimes users will want to see measurements from a particular location.
+    To ensure that this operation is going to be fast and done in Constant Time Big O notation, we will then make location parameter a tag.
+    This alone will change the performance of searching for measurements in particular locations.
+\end{itemize}
+%still need to add more design decisions
