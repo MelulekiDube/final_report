@@ -1,8 +1,35 @@
 \section{System Development}\label{sec:system-development}
-\subsection*{IMPLEMENTATION AND UI DESIGN}
-\subsection{Requirements Gathering}\label{subsec:requirements-gathering}
+\subsection{Implementation and UI Design}\label{subsec:implementation-and-ui-design}
+The project required 2 User Interfaces to be built separately.
+The first interface was from the Android application that the users end users will use on their pohones to manually measure differed metrics on the network.
+The second interface is the front-end web application that the users are going to interact with to view the network performance with respect to different metrics.
+The design of the front-end web interface was designed with users in codesign workshop that we ran.
+The second interface however did not involve users, but we ran usability studies after the designs were complete and implemented.
 \subsection{Development Framework and Methodology}\label{subsec:development-framework-and-methodology}
 \subsubsection{Extending Mobiperf}
+As we required to create application to actually perform measurements collection in the network, we tried not to reinvent the wheel and look at what has been done already.
+One tool that already implemented most of the features is Mobiperf\cite{mobiperf}.
+This is a tool by MLab group, which is an open source android application that can be used for measurement performance on mobile platforms\cite{mobiperf}.
+We had to add functional and nonfunctional features to Mobiperf for it to work as we wanted.
+The functional features added included:
+\begin{itemize}
+    \item Keep track of daily data usage from users, which is one of the requirements that the users asked for during the workshop we had with them.
+    This will allow users to budget the amount of data they need more accurately.
+    \item Included username tag to measurement, allowing users to also record measurement anonymously.
+    The username is hashed just before the data is sent to the server for storage, so we cannot data back to the users.
+    \item Data recorded is sent into a server of our choosing for storage.
+\end{itemize}
+Nonfunctional features added to mobiperf include:
+\begin{itemize}
+    \item Most of the implementation was based on the Android API 14 implementation.
+    Since then a lot of methods and classes have been replicated and thus were not going to work well with the new versions of Android.
+    We then had to migrate implementation of most user interface and features to ensure that they were using latest currently supported classes.
+    An example of these are permission asking, old android application required the user to put the list of permissions required in the manifest file and on installation the application would request these permissions, and these will be kept for the duration of the application lifetime on the phone.
+    This needed changing to the new system where an application asks for permissions at run time as required.
+    Before using any feature that requires those permissions you first need check if you still have permissions and proceed appropriately.
+    Other changes in this regard consist of replacing deprecated classes like TabActivity, PreferenceActivity etc into using the new Android Fragments and FragmentActivity.
+    \item Changed the build system from Ant to the widely used gradle system.
+\end{itemize}
 \subsubsection{Programming Language and Framework}
 \subsubsection{Java Libraries}
 \subsection{Software Development Methodology}\label{subsec:software-development-methodology}

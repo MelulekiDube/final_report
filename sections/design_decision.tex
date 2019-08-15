@@ -1,12 +1,39 @@
 \section{Requirement Analysis and Design}\label{sec:design-decision}
+\subsection{Requirements Gathering}\label{subsec:requirements-gathering}
+To ensure that the system was going to be something that is useful to all those involved we needed to gather requirements from all types of users of the system.
+To gather these requirements we employed few techniques.
+\subsubsection{Communication with Project Supervisor}
+The initial requirements were given by the project supervisor.
+Throughout the project we consistently checked in with the supervisor via emails and meetings to ensure that the system being built was per requirements and to gather any ad hoc requirements that might have come up.
+\subsubsection{Communication with the Inethi Network Stakeholders}
+The stakeholders we interacted with included the directors of the network, the administrators of the network and the normal users of the network.
+For directors of the network we had face to face encounter with them were we told them about the project, and we asked their opinions on it.
+This was a one time only meeting and managed to give us requirements from the point of view of the directors of the network.
+\paragraph{}
+We also met with the users of the network and administrators of the network.
+This was on a one on one work shop we organized for users to interact with some mock-ups we had come up with.
+For the work shop we interacted with 3 users of the Inethi network and 1 person having an admin role within the network.
+In total, we had interactions with 4 people from Oceans View.
+We also took the time to interview the candidates on the idea of the project and asked for their thoughts and if there were any features that they needed from the application.
+\subsubsection{Surveys}
+We asked the users of the network to fill in some survey question at the end of the workshop that we had organized.
+This also gave us more feedback that the users might have not mentioned during the sessions.
+The answers to these surveys were anonymous.
 \subsection{Requirements Analysis}\label{subsec:requirements-analysis}
+Using the above techniques we managed to gather a list of requirements and have split these into two sets, the one set is a list of functional requirements, and the other set of is that of non-functional requirements.
+The list of functional requirements includes:
 \begin{itemize}
-    \item Lightweight application to run on users phones to run data collection system
     \item Testbed for researchers to be able to run experiments on the network
-    \item A way of showing users how many data is used on inethi
     \item Be able to analyze ip addresses sending the most request, and most visited ip addresses
     \item Users to be able to track data usage from their children's accounts
-    \item Give users ability to view data accross differnt times
+    \item Give users ability to view data across different times
+    \item A way of showing users how many data is used on inethi
+\end{itemize}
+The list of non-functional requirements includes:
+\begin{itemize}
+    \item Lightweight application to run on users phones to run data collection.
+    \item Since data viewed will be show realtime QoS metrics of the network the system needs to have high performance to avoid lagging.
+    \item Secure ways of storing user data to avoid leaks of collected data.
 \end{itemize}
 \subsection{Design}\label{subsec:design}
 \begin{figure*}
@@ -26,7 +53,7 @@ The main components of the system as from the design are:
     The measurement database and the metadata databases are adopted from the works done by\cite{7523537} with MONROE platform.
     We added the user database to be able to store user accounts so users can be able to also have their network usage data stored for later viewing.
 \end{itemize}
-\paragraph{}
+\subsubsection{Databases}
 Coming up with the system required number of decision to be made.
 One of these was the database types to use for the 3 databases that we want to have in the system.
 The three databases we have in the system have different use cases and this allowed us to have different databases for each of those.
@@ -39,7 +66,7 @@ The three databases we have in the system have different use cases and this allo
     We settled for Mongo Database as it has a lot of support and a very well documented Java library.
     \item The Metadata Database is a database that we are going is used to store the experiment request by researchers on the network.
     Therefore, when a researcher requests particular experiments to be done on the system we want to be able to store this request.
-    The experiment request stored will rarely be queried but when we do so, we still  need the queries to be as fast as possible.
+    The experiment request stored will rarely be queried but when we do so, we still need the queries to be as fast as possible.
     Experiment results are all be given a random unique key, which we will use to run queries.
     Hence, for the above reasons we can still use a document store database as it fits well with our requirements.
     For this we also chose the Mongo Database for consistency and for the reasons already mentioned.
@@ -52,4 +79,114 @@ The three databases we have in the system have different use cases and this allo
     To ensure that this operation is going to be fast and done in Constant Time Big O notation, we will then make location parameter a tag.
     This alone will change the performance of searching for measurements in particular locations.
 \end{itemize}
+Since all the databases used in this case are noSQL databases we did not have to design the schemas of the databases, which is an advantage and disadvantage of using this types of database.
+\begin{table}[h!]
+    \begin{center}
+        \caption{Table showing a table view of the Users database, highlighting the properties stored in the database.}
+        \label{tab:usertable}
+        \begin{tabular}{c|c}
+            \hline
+            \textbf{Email Address} & \textbf{Hash of Email Address}\\
+            \hline
+            String & String\\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+Table\ref{tab:usertable} table view of the users' database.
+It highlights the properties from users that we are going to be storing, that is their email address, the MD5 hash of the email address.
+The rationale for this simple design is because we will not be authenticating the users ourselves.
+Since users are going to use their email addresses, we can use the authentication services by google and others to do the authentication for us.
+This will provide more security for users as we don't get to store their passwords and as seen above simplifies the design of the system.
+As mentioned the system will be recording user data, and to maintain anonymity, we will be storing user data with the hash of the users and not their email address to maintain ensure that the data is anonymous and cannot be traced back to the users.
+For retrieving user data, the users will give us their email address, and in turn we will check within the database to get their hash value and then use this hash value to search for any data that belongs to them.
+\begin{lstlisting}[language=json, caption=JSON structure showing how the experiment metada documetns stored in the database will look like]
+{
+"request_type":string
+"job_description":{
+"measurement_description":{
+"type":string
+"key":string
+"start_time":string
+"end_time":string
+"interval_sec":int
+"count":long
+"priority":long
+"parameters":{
+//depends on the measurement
+}
+}
+"node_count":int
+"job_interval":int
+}
+"user_id":string
+}
+\end{lstlisting}
+Listing 1 shows the structure of an individual document that will be stored in the experiment metadata database.
+The parameter fields will have different structure for different measurement types that are being scheduled.
+The different possible fields are shown for each measurement type in the appendix.
+Each job will have an ID field, which is randomly generated and unique for all the jobs scheduled.
+The user id filed is needed to know, which jobs belong to which users.
+Here, we will also hash this value with the email address of the researcher who scheduled the job.
 %still need to add more design decisions
+\begin{figure*}
+    \begin{center}
+        \includegraphics[width=1\linewidth]{resources/Measurements.png}
+    \end{center}
+    \caption{Showing UML class diagrams of the different types of measurements and their associations.}
+    \label{figure:measurement}
+\end{figure*}
+
+Figure \ref{figure:measurement} shows us the UML Diagrams for the different measurements that we are going to be storing and how they are associated to each other.
+As can be seen all measurements types inherit from the Measurement class, which has the properties task key, time, username, and whether a measurement is an experiment measurement.
+Since we are using Influx Database for storing our data, all measurement data stored needs to be referenced by the time as Influx is a time series database.
+We are storing the username so that we can know from the database how different users we are getting the results from.
+The username is hashed at all times to also maintain anonymity.
+The property for whether a measurement is related to an experiment stems form the fact that we also record some manual measurements that mobile phone users are going to trigger from the phones.
+These can also be the realtime measurements that we are constantly collecting to keep track of the quality of the networks.
+The experiment measurements are measurements that belong to a particular researcher and thus are as a result of a researcher scheduling measurements on the system.
+The task key of the measurements is because we want to be able to monitor all jobs that are run and be able to tie them back to the people who scheduled the measurements so when they query them we can give them the measurements back.
+The task key is a unique for all the measurements.
+
+\subsection{Package Diagrams}\label{subsec:package-diagrams}
+From the high level system design and the requirements we got form the users of the system we were able come up with some models of the system, which later on where used to drive development of the system.
+One of the these drawn diagrams is a package diagram and shows the arrangement and organizations of model elements.
+\begin{figure*}
+    \begin{center}
+        \includegraphics[width=1\linewidth]{resources/package_diag.png}
+    \end{center}
+    \caption{Showing UML package diagrams of the system.}
+    \label{figure:packages}
+\end{figure*}
+Figure \ref{figure:packages} shows the package diagram of our system.
+The server in our system contains of 5 packages that all represent separate services that they provide.
+The server package can be hosted within the Inethi network server and will then be accessible by the other packages like the web view and the Mobile devices.
+All the other packages use one, or many of the services offered by the server.
+An example is the Mobile phones, which will use the Database Request Handler service to save the recorded data to the database.
+The reasons for prohibiting direct access to databases from mobile phones is so that we can analyze the data being written to the database to ensure that all data is safe.
+Also, this allows for us to change the underlying databases without needing to change the or update any functionality on the mobile phones.
+
+\subsection{State and State Transitioning of the System}\label{subsec:state-and-state-transitioning-of-the-system}
+This section details the different states that the application can be in and how the application will alternate between these statuses.
+This section details will be mostly based on the phone/mobile application that will be created.
+\begin{figure*}
+    \begin{center}
+        \includegraphics[width=1\linewidth]{resources/state_chart.png}
+    \end{center}
+    \caption{Showing State Machine Chart for the mobile application that we will be building}
+    \label{figure:state}
+\end{figure*}
+Figure \ref{figure:state}  shows the state chart of the mobile application that is to be built.
+The phone has 3 main states shown in the Live container, and these are idle, checking in and running measurements.
+The idle state is the first state the phone enters upon installation.
+In this state the phone keeps a timer, which triggers the checking in and sometimes running of measurements.
+During checking in the mobile application contacts the server to find out if there are any experiment jobs that the phone can run.
+If the server responds with a job, the phone will then schedule these measurements and return to idle state while starting the timer.
+
+If time comes for a particular measurement to run the phone will leave the idle state and got run measurement state.
+During the run measurement the measurement required are run, and the results are built and sent to the server as required.
+The phone then starts the timer and goes back to being idle.
+Every time the phone leaves the idle state the timer will be stopped and resumed when it comes back.
+The phone will forever be in this loop unless the user terminates the phone directly by which the application will then stop.
+\paragraph{}
+As this paper focuses mostly on designing the tool for collecting measurements from the phones and storage from these measurements, there will be limited talk about users hence the model diagrams are more concerned with the system and not user interaction with the system and there is limited interaction with the users from collection of data and storage of data point of view.
