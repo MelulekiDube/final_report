@@ -10,6 +10,7 @@
 \usepackage{longtable}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage[toc,page]{appendix}
 \usepackage[
 bookmarksopen,
 bookmarksdepth=2,
@@ -56,6 +57,10 @@ breaklinks=true
     {9}{{{\color{numb}9}}}{1}
 }
 \begin{document}
+	\begin{figure}
+		\centering
+		\includegraphics{cover_page.pdf}
+	\end{figure}
 	\title{Quality of Service Monitoring System for Community Networks}
 	%%\subtitle{Philosophy Invades Software Engineering}
 	\authorinfo{Meluleki Dube}
@@ -87,4 +92,5 @@ breaklinks=true
 	\input{sections/conclusions}
 	\bibliographystyle{acm}
 	\bibliography{references}
+	\input{sections/appendix}
 \end{document}

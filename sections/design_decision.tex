@@ -81,17 +81,17 @@ The three databases we have in the system have different use cases and this allo
 \end{itemize}
 Since all the databases used in this case are noSQL databases we did not have to design the schemas of the databases, which is an advantage and disadvantage of using this types of database.
 \begin{table}[h!]
-    \begin{center}
         \caption{Table showing a table view of the Users database, highlighting the properties stored in the database.}
         \label{tab:usertable}
-        \begin{tabular}{c|c}
+        \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{c|c|c}
             \hline
-            \textbf{Email Address} & \textbf{Hash of Email Address}\\
+            \textbf{Email Address} & \textbf{Hash of Email Address} & \textbf{User Type}\\
             \hline
-            String & String\\
+            String & String & String\\
             \hline
         \end{tabular}
-    \end{center}
+        }
 \end{table}
 Table\ref{tab:usertable} table view of the users' database.
 It highlights the properties from users that we are going to be storing, that is their email address, the MD5 hash of the email address.
