@@ -1,34 +1,35 @@
 \section{System Development}\label{sec:system-development}
 \subsection{Implementation and UI Design}\label{subsec:implementation-and-ui-design}
-The project required 2 User Interfaces to be built separately.
-The first interface was from the Android application that the users end users will use on their phones to manually measure differed metrics on the network.
-The second interface is the front-end web application that the users are going to interact with to view the network performance with respect to different metrics.
-The design of the front-end web interface was designed with users in codesign workshop that we ran.
-The second interface however did not involve users, but we ran usability studies after the designs were complete and implemented.
+The project required two separate User Interfaces.
+The first interface was for the Android application that would allow users to measure differed metrics on the network.
+The second interface is the front-end web application that would allow users to view network performance.
+The design of the front-end web interface was done with users in codesign workshop.
 \subsection{Development Framework and Methodology}\label{subsec:development-framework-and-methodology}
 \subsubsection{Extending Mobiperf}
-As we required to create application to actually perform measurements collection in the network, we tried not to reinvent the wheel and look at what has been done already.
-One tool that already implemented most of the features is Mobiperf\cite{mobiperf}.
-This is a tool by MLab group, which is an open source android application that can be used for measurement performance on mobile platforms\cite{mobiperf}.
+As we required to create an application to perform measurements in the network, we tried not to reinvent the wheel and looked at what has been done already.
+One tool that closely implemented most required features is Mobiperf\cite{mobiperf}.
+This is an application developed by MLab group, which is an open source android application that can be used for measuring network performance on mobile platforms\cite{mobiperf}.
+The tool besides being outdated as it used many deprecated classes and methods also missed some of the features we needed.
+One of these is the ability to collect personal data usage from users.
 We had to add functional and nonfunctional features to Mobiperf for it to work as we wanted.
 The functional features added included:
 \begin{itemize}
-    \item Keep track of daily data usage from users, which is one of the requirements that the users asked for during the workshop we had with them.
+    \item Keep track of daily data usage from users, which is one of the requirements that the users asked for during the decision workshop.
     This will allow users to budget the amount of data they need more accurately.
     \item Included username tag to measurement, allowing users to also record measurement anonymously.
-    The username is hashed just before the data is sent to the server for storage, so we cannot data back to the users.
+    The username is hashed just before the data is sent to the server for storage, so we cannot link data back to the users.
     \item Data recorded is sent into a server of our choosing for storage.
 \end{itemize}
 Nonfunctional features added to mobiperf include:
 \begin{itemize}
     \item Most of the implementation was based on the Android API 14 implementation.
-    Since then a lot of methods and classes have been replicated and thus were not going to work well with the new versions of Android.
-    We then had to migrate implementation of most user interface and features to ensure that they were using latest currently supported classes.
-    An example of these are permission asking, old android application required the user to put the list of permissions required in the manifest file and on installation the application would request these permissions, and these will be kept for the duration of the application lifetime on the phone.
-    This needed changing to the new system where an application asks for permissions at run time as required.
-    Before using any feature that requires those permissions you first need check if you still have permissions and proceed appropriately.
-    Other changes in this regard consist of replacing deprecated classes like TabActivity, PreferenceActivity etc into using the new Android Fragments and FragmentActivity.
-    \item Changed the build system from Ant to the widely used gradle system.
+   Many of methods and classes have been deprecated and were not going to work well with the new versions of Android.
+    We had to redesign and implement of most user interface and features to ensure that they were using latest currently supported classes.
+    An example of these are permission asking where old android application required the user to put the list of permissions required in the manifest file and on installation the application would request these permissions, and these would be kept for the duration of the application lifetime on the phone.
+    This needed changing so that an application asks for permissions at run time as required.
+    Before using any feature that requires those permissions you first need to check if you still have permissions and proceed appropriately.
+    Other changes in this regard consist of replacing deprecated classes like TabActivity PreferenceActivity into using the new Android Fragments and FragmentActivity.
+    \item Changed the build system from Ant to the widely used Gradle system.
 \end{itemize}
 \subsubsection{Programming Language and Framework}
 The main language used for building the backend of the system is Java with Maven.
@@ -36,15 +37,15 @@ This allowed us to concentrate on writing the application and not worry much abo
 For the android application, the Android Software Development Kit was used to enhance and build the application.
 For the frontend website, we used React a Javascript framework for building responsive interfaces.
 We used git and github for version control and collaborations needed.
-The build of the application packages the system into jar files, which can then be copied to any machine running with Java.
+The result of the build of the application is a jar file, which can then be copied to any machine running with Java.
 \subsubsection{Java Libraries}
-Where possible we seeked to reuse open source java libraries and avoid reinventing the wheel.
+Where possible, we looked to reuse open source java libraries to avoid reinventing the wheel.
 The notable open source libraries used are:
 \begin{itemize}
     \item Influx and Mongo Db drivers for java.
     These where used for performing the queries to the databases.
     \item Google's gson and the Json library for parsing Json data and converting Plain Old Java Object1 to Json.
-    \item For parsing the pcap files we used teh pkts library, which a pure java library for reading and parsing pcap files.
+    \item For parsing the pcap files we used the pkts library, which is a pure java library for reading and parsing pcap files.
     \item Apache VFS library for virtual file systems.
     This was to allow the users of the network to serve the pcap files in any file system they wish to and the  library will able to still access these in a seamless manner.
 \end{itemize}
@@ -59,22 +60,24 @@ All the above represent the stakeholders in the system.
 \subsubsection{Iterative Development and User Centred Design}
 As mentioned we had 3 iterations with the different stakeholders involved.
 The first iteration involved was feasibility study, which we ran with the members of Oceans's view.
-During this session we presented interactive mockups to the users to interact with.
+During this session we presented interactive mockups to the users.
 During this we had users tell us what they were doing with the mockup to get feedback on the affordance of the features we had built.
 The results of this iteration were used to drive the developers process.
 \subsubsection{User Evaluation}
 We then had sessions with post graduate students who are potential users of the experiment scheduling feature of the system.
 During this we presented the version of the application we had and asked for their feedback on the work done till this point.
-This user evaluation was done as a group session and not one-to-one.
-The results for this session where used to go through another iteration of design and implementation.
-We repeated user evaluation process only one more time after the initial feedback.
+This evaluation was done as a group session and not one-to-one.
+The feedback from this session where used to go through another iteration of design and implementation.
+We repeated user evaluation process one more time after the initial feedback.
 \subsubsection{Testing, Documentation and Maintainability}
 To ensure the credibility of the system, we required testing of the system.
 Testing was done as a combination of unit testing and manual testing.
 By manual testing we refer to the fact that the system was left in environment that simulated the production environment.
+We scheduled a number of different measurements types, this included reoccurring measurements and one time schedules.
+We then had phones running system left for few days.
 The system was then used as if it were in the production process and errors and bugs caught were
 
 Most functionality is documented to allow for code to be easily maintained by future developers.
 The system was also built to allow for easy reconfigurations at all fronts.
-The user applications consists of preferences page to allow users to change most work flows.
+The user applications consists of preferences page to allow users to change work flows.
 The backend system has a JSON config files that the administrators of the system can use to make the system behave as they want.
