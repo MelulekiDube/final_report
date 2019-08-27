@@ -2,22 +2,20 @@
 %Are there any theories, concepts, terms, and ideas that may be unfamiliar to the target audience and will require you to provide any additional explanation?
 %Any historical data that need to be shared in order to provide context on why the current issue emerged?
 %Are there any concepts that may have been borrowed from other disciplines that may be unfamiliar to the reader and need an explanation?
-\subsection{Quality of Service}\label{subsec:quality-of-services}
 Quality of Service(QoS) is defined to be the ability of the network to provide a service at an assured service level\cite{soldani_book}.
-QoS has relations to the term Quality of Experience(QoE) which explains how users experience a particular service\cite{6462223}.
-For example if we have the raw throughput to be low, and we were watching a YouTube we will not have a good experience of this service.
+QoS has relations to the term Quality of Experience(QoE), which explains how users experience a particular service\cite{6462223}.
+For example if we have the network throughput to be low, and we were watching a YouTube video, we will not have a good experience of this service.
 In this case the raw throughput measured will be the Quality of Service measurement while the experience that the users have with streaming the YouTube videos will be Quality of Experience.
-The above example is confirmation that QoS affects the users QoE of services.
-Quality of Service includes metrics like throughput and delays being expected in the network.
-For QoS metrics to be meaningful and effective each data should be tied to a particular location, device that recorded the data, and possibly the time the data was collected.
-The aim of this work is to build a tool to allow the different stakeholders in the network to monitor these metrics to give an estimate of the Quality of Service that they can expect from the network.
-
+The above example is illustrates that QoS affects the users QoE of services.
+Quality of Service includes metrics like throughput and delays being experienced in the network.
+For QoS metrics to be meaningful and effective each data point needs to be be tied to a particular location, device that recorded the data, and possibly the time the data was collected.
+The aim of this work is to build a software tool that would allow different stakeholders in the network to monitor these metrics in order to estimate the Quality of Service that can be expected from the network.
 %Community Networks section
 \subsection{Community Networks}\label{subsec:community-networks}
 %From a technical point of view, community networks are
 %large-scale, distributed and decentralized systems composed
 %of many nodes, links, content and services.
-Community networks are large-scale, distributed networks containing many nodes, links, content and services\cite{Braem:2013:CRC:2500098.2500108}.
+Community networks are defined to be large-scale self-organized distributed and decentralized networks which are built and managed by the citizens for citizens \cite{Braem:2013:CRC:2500098.2500108}.
 The architecture of community networks is usually built with low cost hardware with the nodes often running an open source software\cite{Braem:2013:CRC:2500098.2500108}.
 Nodes in a community network are devices that relay data within the network or devices that provide other nodes network access\cite{8320771}.
 The links between the nodes can be wireless or wired\cite{8320771}.
@@ -27,100 +25,71 @@ Community Networks are part of the subset of networks characterized as:
 (iii)neutral as the network can be used to transmit data of any kind and by any participant\cite{Braem:2015:AEQ:2830629.2830639}.
 
 \paragraph{}The setup of community networks make them more appealing for providing internet access to unrepresented areas.
-Some characteristics that allow for this are:
-\begin{itemize}
-    \item  Decentralization of the network\cite{Selimi:2014:TAD:2723218.2723265} which removes the chances of having a single point of failure within the network.
-    \item Community networks are also self-managing\cite{Braem:2013:CRC:2500098.2500108}, which means that they will not be so costly as they will not require a body to manage the network since the networks are managed by the users of the network.
-\end{itemize}
-Examples of community networks include:
-\begin{enumerate}
-    \item \textbf{Inethi Network} whose goal is to extend community network models by enabling sharing and authoring of local digital resources and services\cite{inethi_technologies}.
-    \item \textbf{Zenzele.net} which is a community network that provides cheap telephone and internet access to the community members of the\cite{zenzeleni.net}.
-    \item \textbf{guifi.net} that operates in Spain\cite{guifi}, which by 2015 was the world's largest community networks in terms of number of nodes and coverage with over 27000 operational nodes\cite{2015:TOG:2852375.2852741}.
-\end{enumerate}
+Some characteristics that allow for this are, decentralization of the network\cite{Selimi:2014:TAD:2723218.2723265} which removes the chances of having a single point of failure within the network.
+Community networks are also self-managing\cite{Braem:2013:CRC:2500098.2500108}, which means that they will not be so costly as they will not require a body to manage the network since the networks are managed by the users of the network.
+Examples of community networks include, \textbf{Inethi Network} whose goal is to extend community network models by enabling sharing and authoring of local digital resources and services\cite{inethi_technologies}.\textbf{Zenzele.net} which is a community network that provides cheap telephone and internet access to the community members of the\cite{zenzeleni.net}.
+\textbf{guifi.net} that operates in Spain\cite{guifi}, which by 2015 was the world's largest community networks in terms of number of nodes and coverage with over 27000 operational nodes\cite{2015:TOG:2852375.2852741}.
 
-\subsection{Prior Research}\label{subsec:prior-research}
-Researchers who study community networks are faced with challenges some, which are classical network challenges that face all other networks and some that peculiar to these networks\cite{Braem:2013:CRC:2500098.2500108}.
-One of the challenges within these networks stems from the fact that the networks at the physical layer usually use wireless networks, which then means that there has to be extensive wireless planning involved\cite{Braem:2013:CRC:2500098.2500108}.
-The paper goes on to present an infrastructure that aims to remove obstacles for community networks in terms of sustainability and scalability called Community-lab\cite{Braem:2013:CRC:2500098.2500108}.
-\paragraph{}
-Another challenge of Community networks stems from the issue of privacy.
-Community networks should permit users to participate in the networks while maintaining the privacy of their data, and the data they relay, however, this leads to a different notion of threat models and a new notion of trust between the users\cite{Braem:2013:CRC:2500098.2500108}.
-Also, turning requirements like the need for network traffic to be organized fairly such that network neutrality is respected is a challenging task, and it is eis even more challenging when attempting to address this automatically\cite{Braem:2013:CRC:2500098.2500108}.
-
-Researchers in community networks also have trouble accessing the data to analyze for them to study analyze these networks.
-However, there are tools that looking to bridge this gap.
+\subsection{Related Work}\label{subsec:prior-research}
 \subsection{Monitoring systems}\label{subsec:monitoring-systems}
 Monitoring systems are essential to network systems as they give an overall view and many metrics for a network.
-Monitoring networks is crucial not only for the end users of the network who need to know the performance metrics of the network but is also important for the policy-makers and the network regulators\cite{7523537}.
+Monitoring of networks is crucial not only for the end users of the network who need to know the performance metrics of the network, but also for the policy-makers and the network regulators\cite{7523537}.
 ~\cite{7076582}says that there are three stakeholders in network performance measurements, and these are the end-users, the ISPs and the regulators.
-All these groups of people all have different use cases for the measurement data, for instance ISPs can use the data to identify, and isolate network faults and to have an understanding of user's end-end service experience\cite{Ford:2018:RWR:3243157.3243167}.
-Drawing parallels from the argument made in\cite{7523537} where they claimed that the data collected from monitoring networks by running certain measurements is not only important to improve user experience on the network, but also important for providing feed back on the design of other upcoming technologies\cite{7523537}.
+All these groups of people all have different use cases for the measurement data.
+For instance, ISPs can use the data to identify, and isolate network faults and to have an understanding of user's end to end service experience\cite{Ford:2018:RWR:3243157.3243167}.
+Data collected from monitoring networks by running certain measurements is not only important to improve user experience on the network, but also important for providing feed back on the design of other upcoming technologies\cite{7523537}.
 \paragraph{}
-Monitoring of networks consists of being able run some measurements on the networks.
+Monitoring of networks consists of being able run passive and active measurements on the networks.
+Different measurement types include ping measurement where we measure the time taken to ping a target and if there is any packet loss during the ping process, TCP throughput, this is in two forms, the download speed and the upload speed of the network, DNS lookup, which tells the average time it takes to be able to resolve a name of a host to its ip address, lastly we have http measurements telling us the time it takes to send and get a http response to a known http server.
 Different systems have been built thus far to take networks measurements.
 Some of these are accessible to end-users like by going to their website, like OOKLA Speedtest\cite{7523537}.
-Tools like OOKLA Speedtest where criticized by\cite{7523537} as they are not scalable and not repeatable.
+Tools like OOKLA Speedtest have been criticized for not being scalable and not repeatable\cite{7523537}.
 Repeatability has to do with the fact that we cannot continuously take measurements on the network.
 However, there have been more internet measurement platforms that have been introduced through research.
 Internet measurements platforms refers to infrastructure that has been dedicated to periodically run network measurement test on the internet\cite{7076582}.
+These platforms are built on wifi-enabled micro controllers, which are always actively taking measurements.
 \subsubsection{Measurement Tools}\label{null:measurement-tools}
 There have been different network measurement tools designed for collecting network measurements for community networks in particular.
 Some of these studies where mentioned and discussed by\cite{Braem:2015:AEQ:2830629.2830639} and include:
 \begin{itemize}
-    \item RIPE ATLAS, which is a measurement infrastructure that is deployed by the RIPE network Coordination Center and consisting of thousands of hardware probes all around the globe aswell as anchors\cite{7076582, Bajpai:2015:LLU:2805789.2805796}.While hardware probes obtain active measurements determine network connectivity and global reachability, anchors serve as dedicated servers that can act as sources and sinks for the network measurement traffic\cite{Bajpai:2015:LLU:2805789.2805796}
-    \item Another tool is the BISMark tool that seeks to measure home network performance by means of custom gateway firmware\cite{Braem:2015:AEQ:2830629.2830639}
-    \item We also have perfsonar-ps, which is a suit of measurement tools, which can be deployed freely\cite{Braem:2015:AEQ:2830629.2830639}.
+    \item RIPE ATLAS, which is a measurement infrastructure consisting of thousands of hardware probes and servers all around the globe.\cite{7076582, Bajpai:2015:LLU:2805789.2805796}.
+    While hardware probes obtain active measurements to determine network connectivity and global reachability, anchors serve as dedicated servers that can act as sources and sinks for the network measurement traffic\cite{Bajpai:2015:LLU:2805789.2805796}
+    \item Another tool is the BISMark tool that seeks to measure home broadband performance by means of custom gateway firmware\cite{Braem:2015:AEQ:2830629.2830639}
+    \item Perfsonar-ps, a suit of measurement tools, which can be deployed freely\cite{Braem:2015:AEQ:2830629.2830639}.
 \end{itemize}
 \subsubsection{Network Measurement Platforms}\label{null:network-measurement-platforms}
 \subsubsection{Using Smart phones for network data collections}
-A naive approach to taking network measurements is to make use of the users mobile phones, that is, have the phones constantly take network measurements and then sending these to a central database server for analysis.
+One approach to taking network measurements is to make use of the users mobile phones constantly take network measurements and then sending these to a central database server for analysis.
 This can be via an application installed on mobile phones that will collect measurements on fixed time intervals.
 This approach has problems, which include privacy issues, power demands of measurements that will affect the mobile phone's battery life to mention but a few.
-Authors of\cite{Shepard:2011:LMW:1925019.1925023}, come up with LiveLab, a solution to address some challenges that arise from using mobile phones for taking network measurements.
+LiveLab, is a solution to address some challenges that arise from using mobile phones in taking network measurements\cite{Shepard:2011:LMW:1925019.1925023}.
 Livelab is method for measuring real-world smart phone usage and wireless networks with a re-programmable in device logger, which is built to overcome privacy and power challenges\cite{Wang:2015:MMA:2757290.2757291}.
 Livelab leverages hashing of the data recorded from the phone to ensure overcome the privacy issues\cite{Shepard:2011:LMW:1925019.1925023}.
-For power saving, the logger uses 4 different logging methods, which are\cite{Shepard:2011:LMW:1925019.1925023}:
-\begin{itemize}
-    \item Interrupt depended on logging as opposed to polling method
-    \item Piggy-backing which is a save all the data on the phone and then collecting them when the phone is connected to power and idle
-    \item Optimizing logging intervals for periodically logged items
-    \item Lastly having the logger hitchhike on other system application and services waking up
-\end{itemize}
+For power saving, Livelab uses 4 different logging methods, which are\cite{Shepard:2011:LMW:1925019.1925023}, Interrupt depended on logging as opposed to polling method.
+Another method is, Piggy-backing, which is to save all the data on the phone and then collecting them when the phone is connected to power and idle
+Optimizing logging intervals for periodically logged items is also a method used.
+Lastly having the logger hitchhike on other system application and services waking up.
+
 \subsubsection{MONROE PLATFORM}
-MONROE platform according to\cite{7523537} is an independent multi-home open access hardware-based platform for running large-scale measurements and experiments in operational Mobile Broadband networks.
-MONROE platform is said to consist of 250 Nodes both mobile and stationary with each of the software in these Nodes open source\cite{8002921}.
-Each node runs 3 software, the management software to ensure that the node will always remain operational and enable a remote update to all the other software components.
-Another software is the maintenance software monitoring operational status, and the last software is an experiment enabler\cite{8002921}.
+MONROE platform is a multi-home open access hardware-based platform for running measurements and experiments in operational mobile broadband networks\cite{7523537}.
+As of date MONROE platform is said to consist of 250 nodes, both mobile and stationary\cite{8002921}.
+Each node runs 3 software, the management software to ensure that the node  always remains operational and to enable remote updates to all the other software components.
+Another component is the maintenance software that monitors the operational status, and the last software is an experiment enabler\cite{8002921}.
 \paragraph{}
-Monroe can handle experiments that range from continuous latency measurements to real-time flows together with meta-data collection where meta-data is information like location of data type of device for measuring data and so on\cite{7523537}.
+Monroe can handle experiments that range from continuous latency measurements to real-time flows together with meta-data like location of data type of device for measuring data and so on\cite{7523537}.
 The platform comes with a website for viewing the measurements being collected in the network, Nodes and software for orchestrating the collection of the measurements\cite{7523537}.
 \subsubsection{Measurement-Lab and Community Lab}
-Measurement lab(M-Lab) is "an open, distributed server platform for researchers to deploy active internet measurements tools" with the data collected released to the public domain\cite{Dovrolis:2010:MLO:1823844.1823853,Braem:2015:AEQ:2830629.2830639}.
-M-Lab only runs active measurement tests and in addition it conducts measurements between the user/client, and the M-Lab servers to examine the end-end performance along the path\cite{Dovrolis:2010:MLO:1823844.1823853}.
+Measurement lab(M-Lab) is "an open, distributed server platform for researchers to deploy active internet measurements tools" \cite{Dovrolis:2010:MLO:1823844.1823853,Braem:2015:AEQ:2830629.2830639} with the data collected released to the public domain\cite{Dovrolis:2010:MLO:1823844.1823853,Braem:2015:AEQ:2830629.2830639}.
+M-Lab only runs active measurement tests and, in addition conducts measurements between the user/client, and the M-Lab servers to examine the end-end performance along the path\cite{Dovrolis:2010:MLO:1823844.1823853}.
 Some tools provided by M-Labs currently include:
 \begin{itemize}
     \item \textbf{Network Diagnostic Tool (NDT)} which is a tool that measures the through put between the client and host in terms of download and upload speeds\cite{Dovrolis:2010:MLO:1823844.1823853,Braem:2015:AEQ:2830629.2830639}.
-    The tools also tries to determine the causes of slow speeds as well as checks for proxies, Nat devices or middle boxes between the machine running the tests, and the M-Lab server collecting the tests hence providing several objective indication of user experience of an internet connection\cite{Braem:2015:AEQ:2830629.2830639}.
+    The tools also tries to determine the causes of slow speeds as well as checks for proxies, NAT devices or middle boxes between the machine running the tests and the M-Lab server collecting the tests thereby providing several objective indicator of user experience of an internet connection\cite{Braem:2015:AEQ:2830629.2830639}.
     \item \textbf{Network Path and Application Diagnosis (NPAD)} which uses TCP to measure end-to-end throughput and information about the switch/route queues along the path\cite{Dovrolis:2010:MLO:1823844.1823853}.
-    According to Dovroli and team "The tool reports specific events and creates web100 snaplog files along with metadata"\cite{Dovrolis:2010:MLO:1823844.1823853}.
 \end{itemize}
 \paragraph{}
 Community-lab is said to be an open infrastructure that provides to researchers and experimenters a testbed to carry out experiments within wireless community networks\cite{Rameshan:2013:MSC:2508222.2512838}.
 It comes with a testbed that support experimentally-driven research on community based networks\cite{Braem:2013:CRC:2500098.2500108}.
-The testbed provided by Community-Lab is inspired by Planet lab, which is not a measurement platform but still rather supports development and testing of new network services\cite{7076582,Braem:2015:AEQ:2830629.2830639}.
+The testbed provided by Community-Lab was inspired by Planet lab\cite{7076582,Braem:2015:AEQ:2830629.2830639}.
 Each node in Community-Lab consists of two to three devices, and these include the community device, the research device and an optional recovery device connected together via a local network\cite{Rameshan:2013:MSC:2508222.2512838}.
-Community devices are wireless routers, research devices are low powered system that are running OpenWRT distribution that makes it possible to allow simultaneous virtual containers\cite{Rameshan:2013:MSC:2508222.2512838}.
-\subsubsection{Storing of Network Measurement Data}
-One important issue that comes up when we collect data and try to analyze the data is not only how the data is measured but also how the data is stored.
-The storage of data affects how easy it is going to be to extract the data for analysis and to what extent we will be able to run machine learning algorithms on the data.
-Since data will be collected from different devices and different applications(phone application and computer application), we have to have a good design for the data storage.
-\paragraph{}
-One idea to consider is taken from MONROE\cite{7523537}, where the system consisted of:
-\begin{itemize}
-    \item  Remote repository and Data Importer, which will remotely collect experimental data from each node after every experiment.
-    \item Database System, which consists of two tables one for experiment measurements, and the other for meta-data like location device type.
-    The database that is used in MONROE is the Cassandra database.
-    Casas and team also used the Cassandra database in their paper for storage of data for the reasons that Cassandra is a fully distributed database with no single point of failure\cite{8255998}.
-\end{itemize}
-
+Community devices are wireless routers, research devices are low powered systems running OpenWRT distribution that makes it possible to allow simultaneous virtual containers\cite{Rameshan:2013:MSC:2508222.2512838}.
