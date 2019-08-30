@@ -2,6 +2,11 @@
 Community networks are large-scale decentralized networks that are built and operated by the citizens\cite{Selimi:2014:TAD:2723218.2723265}.
 The networks are at times run by non-profit organizations who can cooperate with stakeholders to develop community services, which include the internet and local networking\cite{Braem:2013:CRC:2500098.2500108}.
 These networks are becoming more and more popular for providing Internet access to remote areas.
-They are ideal as they are distributed and meaning there is no single point of failure and  as they can be managed by the users of the network.
-As these networks are mostly managed by the users in the network it will be good to have a monitoring system that users, and the providers of the network could have used to look at how the network is performing.
+As these networks are mostly managed by the users in the network it is good to have a monitoring system that users, and the administrators of the network could have used to look at how the network is performing.
+The performance of the network will be based on network metrics.
+The networks metrics to be used are time for HTTP response to come back after sending an HTTP request, a DNS lookup speed test for finding our how long it took for a DNS lookup to finish, a TCP throughput speed test, which measures the Download speed and Upload Speed, ping test, which measures the time taken for pinging a chosen target and lastly trace-route values give the different servers that the system hits when sending packets and time taken to reach any of them.
+
 This paper then focuses on building a Monitoring tool for the community networks with Inethi as a case study.
+There is more emphasis on creating the application for actually collecting the data from the network, and the storage of the data that is collected.
+The paper also describes an agile process of building a system and different techniques for testing an application.
+The rest of the paper describes the requirements from the stake holders' perspective, then describes the design and implementation of the system, lastly we describe the testing and results of the application performance.
