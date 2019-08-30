@@ -39,6 +39,46 @@ The list of non-functional requirements includes:
     Secure speak to two things, data should not be accessible from outside the system and if it happens, the data should be stored such that the identity of users is not compromised.
 \end{itemize}
 \subsection{Design}\label{subsec:design}
+\subsection{Package Diagrams}\label{subsec:package-diagrams}
+From the high level system design and the requirements we got form the users of the system we were able come up with models of the system, which later on where used to drive development of the system.
+One is a package diagram and shows the arrangement and organizations of model elements.
+\begin{figure*}
+    \begin{center}
+        \includegraphics[width=1\linewidth]{resources/package_diag.png}
+    \end{center}
+    \caption{Showing UML package diagrams of the system.}
+    \label{figure:packages}
+\end{figure*}
+Figure \ref{figure:packages} shows the package diagram of our system.
+The server in our system contains 5 packages that all represent separate services.
+The server package can be hosted within the Inethi network server and will then be accessible by the other packages like the web interface and the mobile devices.
+All the other packages use one, or many of the services offered by the server.
+An example is the mobile phones, which use the Database Request Handler service to save the recorded data to the database.
+The reasons for prohibiting direct access to databases from mobile phones is so that we can analyze the data being written to the database to ensure that all data is safe.
+Also, this allows for us to change the underlying databases without needing to change or update any functionality on the mobile phones.
+
+\subsection{State and State Transitioning of the System}\label{subsec:state-and-state-transitioning-of-the-system}
+This section details the different states that the mobile application can be in and how the application will alternate between these statuses.
+\begin{figure*}
+    \begin{center}
+        \includegraphics[width=1\linewidth]{resources/state_chart.png}
+    \end{center}
+    \caption{Showing State Machine Chart for the mobile application that we will be building}
+    \label{figure:state}
+\end{figure*}
+Figure \ref{figure:state}  shows the state chart of the mobile application that is to be built.
+The phone has 3 main states shown in the Live container, and these are 'idle', 'checking_in' and 'running measurements'.
+The 'idle' state is the first state the phone enters upon launching the application.
+In this state the phone keeps a timer, which triggers the checking in, and if necessary running of measurements.
+During checking in, the mobile application contacts the server to find out if there are any experiment jobs that the phone can run.
+If the server responds with a job, the phone will then schedule these measurements and return to idle state while starting the timer.
+
+If time comes for a particular measurement to run the phone will leave the idle state and move to 'run measurement' state.
+During the 'run measurement' the scheduled measurements are run, and the results are built and sent immediately to the server as required.
+The phone then starts the timer and goes back to being idle.
+Every time the phone leaves the idle state the timer will be stopped and resumed when it comes back.
+The phone will forever be in this loop unless the user terminates the application directly by which the application will then stop.
+\subsection{System Architecture}\label{subsec:system-architecture}
 \begin{figure*}
     \begin{center}
         \includegraphics[width=1\linewidth]{resources/system_des.png}
@@ -46,7 +86,7 @@ The list of non-functional requirements includes:
     \caption{Showing the system overview, different components making the system and the communication directions between these components in the systems.}
     \label{figure:system}
 \end{figure*}
-Figure\ref{figure:system} shows the architecture of the system with the different components that make up the system.
+Figure\ref{figure:system} shows the architecture of the system after analysing the given requirements with the different components that make up the system.
 The main components of the system as from the design are:
 \begin{itemize}
      \item \textbf{Orchestrator:} used by researchers, system administrator and the system itself to schedule measurements to be run on the data collection points.
@@ -163,42 +203,3 @@ These can also be the realtime measurements that we are constantly collecting to
 The experiment measurements are those that belong to a particular researcher and thus are as a result of a researcher scheduling measurements on the system.
 The task_key of the measurements is because we want to be able to monitor all jobs that are run and be able to tie them back to the people who scheduled the measurements so when they query them we can give them the measurements back.
 The task key is a unique for all the measurements.
-\subsection{Package Diagrams}\label{subsec:package-diagrams}
-From the high level system design and the requirements we got form the users of the system we were able come up with models of the system, which later on where used to drive development of the system.
-One is a package diagram and shows the arrangement and organizations of model elements.
-\begin{figure*}
-    \begin{center}
-        \includegraphics[width=1\linewidth]{resources/package_diag.png}
-    \end{center}
-    \caption{Showing UML package diagrams of the system.}
-    \label{figure:packages}
-\end{figure*}
-Figure \ref{figure:packages} shows the package diagram of our system.
-The server in our system contains 5 packages that all represent separate services.
-The server package can be hosted within the Inethi network server and will then be accessible by the other packages like the web interface and the mobile devices.
-All the other packages use one, or many of the services offered by the server.
-An example is the mobile phones, which use the Database Request Handler service to save the recorded data to the database.
-The reasons for prohibiting direct access to databases from mobile phones is so that we can analyze the data being written to the database to ensure that all data is safe.
-Also, this allows for us to change the underlying databases without needing to change or update any functionality on the mobile phones.
-
-\subsection{State and State Transitioning of the System}\label{subsec:state-and-state-transitioning-of-the-system}
-This section details the different states that the mobile application can be in and how the application will alternate between these statuses.
-\begin{figure*}
-    \begin{center}
-        \includegraphics[width=1\linewidth]{resources/state_chart.png}
-    \end{center}
-    \caption{Showing State Machine Chart for the mobile application that we will be building}
-    \label{figure:state}
-\end{figure*}
-Figure \ref{figure:state}  shows the state chart of the mobile application that is to be built.
-The phone has 3 main states shown in the Live container, and these are 'idle', 'checking_in' and 'running measurements'.
-The 'idle' state is the first state the phone enters upon launching the application.
-In this state the phone keeps a timer, which triggers the checking in, and if necessary running of measurements.
-During checking in, the mobile application contacts the server to find out if there are any experiment jobs that the phone can run.
-If the server responds with a job, the phone will then schedule these measurements and return to idle state while starting the timer.
-
-If time comes for a particular measurement to run the phone will leave the idle state and move to 'run measurement' state.
-During the 'run measurement' the scheduled measurements are run, and the results are built and sent immediately to the server as required.
-The phone then starts the timer and goes back to being idle.
-Every time the phone leaves the idle state the timer will be stopped and resumed when it comes back.
-The phone will forever be in this loop unless the user terminates the application directly by which the application will then stop.
