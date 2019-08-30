@@ -38,6 +38,12 @@ The list of non-functional requirements includes:
     \item Secure ways of storing user data to avoid leaks of collected data.
     Secure speak to two things, data should not be accessible from outside the system and if it happens, the data should be stored such that the identity of users is not compromised.
 \end{itemize}
+
+One of the resources was left out after discussing with the users that it was a potential security risk.
+This resource is that of parents being able to monitor their children's usage of the community network.
+The security issue at risk is that at the end it would be hard to maintain a list of who is a guardian for who and who has permission to look over whose internet usage.
+This would have ended up leading to anyone in the network being able to see what anyone in the network is using the network for which goes against the privacy requirements.
+For these reasons, this requirement was left out in the design of the application.
 \subsection{Design}\label{subsec:design}
 \subsubsection{Package Diagrams}
 From the high level system design and the requirements we got form the users of the system we were able come up with models of the system, which later on where used to drive development of the system.
