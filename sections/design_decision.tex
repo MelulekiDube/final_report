@@ -39,7 +39,7 @@ The list of non-functional requirements includes:
     Secure speak to two things, data should not be accessible from outside the system and if it happens, the data should be stored such that the identity of users is not compromised.
 \end{itemize}
 \subsection{Design}\label{subsec:design}
-\subsection{Package Diagrams}\label{subsec:package-diagrams}
+\subsubsection{Package Diagrams}
 From the high level system design and the requirements we got form the users of the system we were able come up with models of the system, which later on where used to drive development of the system.
 One is a package diagram and shows the arrangement and organizations of model elements.
 \begin{figure*}
@@ -57,7 +57,7 @@ An example is the mobile phones, which use the Database Request Handler service 
 The reasons for prohibiting direct access to databases from mobile phones is so that we can analyze the data being written to the database to ensure that all data is safe.
 Also, this allows for us to change the underlying databases without needing to change or update any functionality on the mobile phones.
 
-\subsection{State and State Transitioning of the System}\label{subsec:state-and-state-transitioning-of-the-system}
+\subsubsection{State and State Transitioning of the System}\label{subsec:state-and-state-transitioning-of-the-system}
 This section details the different states that the mobile application can be in and how the application will alternate between these statuses.
 \begin{figure*}
     \begin{center}
@@ -67,8 +67,8 @@ This section details the different states that the mobile application can be in 
     \label{figure:state}
 \end{figure*}
 Figure \ref{figure:state}  shows the state chart of the mobile application that is to be built.
-The phone has 3 main states shown in the Live container, and these are 'idle', 'checking_in' and 'running measurements'.
-The 'idle' state is the first state the phone enters upon launching the application.
+The phone has 3 main states shown in the Live container, and these are \'idle\', \'checking\_in\' and \'running measurements\'.
+The \'idle\' state is the first state the phone enters upon launching the application.
 In this state the phone keeps a timer, which triggers the checking in, and if necessary running of measurements.
 During checking in, the mobile application contacts the server to find out if there are any experiment jobs that the phone can run.
 If the server responds with a job, the phone will then schedule these measurements and return to idle state while starting the timer.
@@ -194,12 +194,12 @@ Here, we will also hash this value with the email address of the researcher who 
 \end{figure*}
 
 Figure \ref{figure:measurement} shows us the UML Diagrams for the different measurements that can be stored and how they are associated to each other.
-As can be seen all measurements types inherit from the Measurement class, which has the properties task_key, time, username, and whether a measurement is an experiment measurement result or not.
+As can be seen all measurements types inherit from the Measurement class, which has the properties task\_key, time, username, and whether a measurement is an experiment measurement result or not.
 Since we are using Influx Database for storing our data, all measurement data stored needs to be referenced by the time as Influx is a time series database.
 We are storing the username so that we can know from the database how the number of different users/nodes we are getting the results from.
 The username is hashed at all times to also maintain anonymity.
 The property for whether a measurement is related to an experiment stems form the fact that we also record some manual measurements that mobile phone users are going to trigger from the phones.
 These can also be the realtime measurements that we are constantly collecting to keep track of the quality of the networks.
 The experiment measurements are those that belong to a particular researcher and thus are as a result of a researcher scheduling measurements on the system.
-The task_key of the measurements is because we want to be able to monitor all jobs that are run and be able to tie them back to the people who scheduled the measurements so when they query them we can give them the measurements back.
+The task\_key of the measurements is because we want to be able to monitor all jobs that are run and be able to tie them back to the people who scheduled the measurements so when they query them we can give them the measurements back.
 The task key is a unique for all the measurements.

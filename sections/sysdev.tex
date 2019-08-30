@@ -76,6 +76,11 @@ By manual testing we refer to the fact that the system was left in environment t
 We scheduled a number of different measurements types, this included reoccurring measurements and one time schedules.
 We then had phones running system left for few days.
 The system was then used as if it were in the production process and errors and bugs caught were
+During this one main bug was found.
+This bug happened to come from the influx java driver, which missed functionality to add column fields from super classes for inherited measurements.
+As can be seen from Figure \ref{figure:measurement} this feature was needed to ensure that all measurement types have the fields from the super class.
+The Influxdb Java driver is open source, so the code was modified to add this feature.
+The modified code was also submitted to the Influxdb Java driver repository to ensure that future people who need this feature can have it come with Influx driver.
 
 Most functionality is documented to allow for code to be easily maintained by future developers.
 The system was also built to allow for easy reconfigurations at all fronts.

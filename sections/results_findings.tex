@@ -1,0 +1,55 @@
+\section{Results and Findings}\label{sec:results-and-findings}
+This sections seeks to speak into the evaluation the application.
+One of the non-functional requirements was to design a lightweight application in terms of number of resources needed by the application.
+The resources that were focused on include storage space taken on the phone, battery used during operation, and the data used in terms of internet.
+To figure these out the application was left running o the phones over three days.
+After the three days we then checked to see the data that the application was used, the battery used, and the amount of extra storage that was used.
+
+\paragraph{}
+The application on its own without any extra data takes up 6.7MBs of storage.
+Initial battery level before running the experiments was 100%.
+Initial data used by the application was at 0 mbs.
+
+The settings on the application are as follows:
+\begin{itemize}
+    \item Checking in time was 2 minutes.
+    This means that every two minutes the phone will check up with the server to get new measurement jobs to run.
+    The phone will thus have 3 new measurement jobs to run every two minutes.
+    \item The maximum data to be used capacity was set to 50 MBs.
+    That means that the application could use only upto 50MBs after which it will be paused.
+    \item Application sent user personalized data every 2 minutes.
+\end{itemize}
+The reasons for the above conditions is because stress testing was what was being aimed for.
+The server had 6 jobs and every time the phone checked in it got these 6 jobs.
+The results are presented below.
+
+\subsection{Results}\label{subsec:results}
+\begin{table}[h!]
+    \begin{center}
+        \caption{Data showing how much results were used by the phone.}
+        \label{tab:results}
+        \begin{tabular}{l|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+            \textbf{Resource} & \textbf{Result}\\
+            \hline
+            Storage Taken & 6.8MBs \\
+            \hline
+            Data used & 6 MBs \\
+            \hline
+            Battery Capacity & 80\% \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+Table \ref{tab:results} showing the results from running the application for the 3 days with the above mentioned settings.
+As can be seen, the application is not really resource intensive.
+We managed to use 6 MBs in data usage.
+This 6 MBs used includes the data used for running measurement tests, sending personalized user data also checking for extra data.
+Therefore, we can see from that in terms of internet usage the application is lightweight as was one of the non-functional requirements.
+The application is also efficient in terms of storage resource needed.
+This conclusion is reached as the application required extra 1 MBs for storage.
+The 1 MBs used was for probably for storing the user preferences.
+Aside the preferences the application does not store any more details.
+Lastly the application also uses the battery efficiently.
+After being left to run for 3 days as the only main application on the phone, the application used 20\% battery.
+The daily averages for the resource used are estimated to be as follows, for storage usage  0.3MBs, for data Usage 2MBBs and for battery used 6\%.
+Therefore, it is fair to conclude that the non-functional requirement relating to the application being lightweight was met as not much resources are being utilized by the application.
