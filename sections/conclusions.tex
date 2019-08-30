@@ -1,4 +1,14 @@
 \section{Conclusion}\label  {sec:conclusion}
+This work has defined a lightweight application, Intethi-Perf for collecting network measurements in a community network.
+Since the application is lightweight in terms of data usage, this means that the network won't be clogged up with a lot of measurements data.
+We saw how to mitigate the legal issues that come with recording personal user data through hashing and not using exact user location.
+We also saw in this work how building a system using an agile approach can be helpful in dealing with changes that come during the development process.
+
 \section{Future Work}\label{sec:future-work}
-Have nodes that are Wi-Fi enabled hardware to run measurements and not rely on phones this will make realtime data collection possibly.
-We can also implement machine learning algorithms to help automatically monitor the netowrk and take precaations as needed.
+This work just showed the beginning of a network monitoring system, using mobile phones as collectors of network measurements.
+More work still needs to be put, and the collection of measurement should in the future be done by dedicated Wi-Fi enabled micro-controllers and not be left for the phones.
+Adding Wi-Fi enabled hardware to run measurements and not rely on phones will make realtime data collection possibly.
+This will also ensure that we will also always have devices to collect measurements just in case one of the stakeholders want to run or schedule immediate measurements.
+We can also implement machine learning algorithms to help automatically monitor the network and take precautions as needed.
+These can be put in the analyzer component of the system and will analyze all recorded data so to detect any anomalies within the network.
+
